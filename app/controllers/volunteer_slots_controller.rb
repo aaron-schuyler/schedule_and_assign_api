@@ -1,0 +1,2 @@
+class VolunteerSlotsController < ApplicationController
+end

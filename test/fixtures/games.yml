@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sport: one
+  level: one
+  home_team: one
+  away_team: one
+  clock_slot: false
+  site: one
+  start_time: 2020-10-19 14:46:51
+  end_time: 2020-10-19 14:46:51
+  number_of_ref_slots: 1
+  status: 1
+  game_type: one
+
+two:
+  sport: two
+  level: two
+  home_team: two
+  away_team: two
+  clock_slot: false
+  site: two
+  start_time: 2020-10-19 14:46:51
+  end_time: 2020-10-19 14:46:51
+  number_of_ref_slots: 1
+  status: 1
+  game_type: two
