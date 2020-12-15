@@ -5,6 +5,11 @@ module Types
       null: false,
       description: 'Returns a list of games'
 
+      field :teams,
+        [Types::TeamType],
+        null: false,
+        description: 'Returns a list of teams'
+
     def games
       Game.all
     end

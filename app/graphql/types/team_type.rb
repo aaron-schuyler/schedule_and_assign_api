@@ -1,7 +1,7 @@
 module Types
   class TeamType < Types::BaseObject
     field :id, ID, null: false
-    field :organization_id, Integer, null: false
+    field :organization, Types::OrganizationType, null: false
     field :primary_contact_id, Integer, null: true
     field :sport_id, Integer, null: false
     field :level_id, Integer, null: false

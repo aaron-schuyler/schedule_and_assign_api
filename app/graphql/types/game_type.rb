@@ -3,8 +3,8 @@ module Types
     field :id, ID, null: false
     field :sport, Types::SportType, null: false
     field :level, Types::LevelType, null: false
-    field :home_team_id, Integer, null: true
-    field :away_team_id, Integer, null: true
+    field :home_team, Types::TeamType, null: true
+    field :away_team, Types::TeamType, null: true
     field :clock_slot, Boolean, null: true
     field :site_id, Integer, null: true
     field :start_time, GraphQL::Types::ISO8601DateTime, null: true
