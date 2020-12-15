@@ -3,10 +3,10 @@ class CreateGames < ActiveRecord::Migration[6.0]
     create_table :games do |t|
       t.references :sport, null: false, foreign_key: true
       t.references :level, null: false, foreign_key: true
-      t.references :home_team, null: false, foreign_key: true
-      t.references :away_team, null: false, foreign_key: true
+      t.references :home_team, index: true
+      t.references :away_team, index: true
       t.boolean :clock_slot
-      t.references :site, null: false, foreign_key: true
+      t.references :site, foreign_key: true
       t.datetime :start_time
       t.datetime :end_time
       t.integer :number_of_ref_slots

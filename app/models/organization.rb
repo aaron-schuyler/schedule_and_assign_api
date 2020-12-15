@@ -1,3 +1,3 @@
 class Organization < ApplicationRecord
-  belongs_to :primary_contact, class_name: 'User'
+  belongs_to :primary_contact, class_name: 'User', optional: true
 end

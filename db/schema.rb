@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(version: 2020_10_19_185623) do
   create_table "games", force: :cascade do |t|
     t.integer "sport_id", null: false
     t.integer "level_id", null: false
-    t.integer "home_team_id", null: false
-    t.integer "away_team_id", null: false
+    t.integer "home_team_id"
+    t.integer "away_team_id"
     t.boolean "clock_slot"
-    t.integer "site_id", null: false
+    t.integer "site_id"
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer "number_of_ref_slots"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_185623) do
 
   create_table "organizations", force: :cascade do |t|
     t.string "name"
-    t.integer "primary_contact_id", null: false
+    t.integer "primary_contact_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["primary_contact_id"], name: "index_organizations_on_primary_contact_id"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_185623) do
 
   create_table "sites", force: :cascade do |t|
     t.integer "organization_id"
-    t.integer "primary_contact_id", null: false
+    t.integer "primary_contact_id"
     t.string "name"
     t.string "address"
     t.string "city"
@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_185623) do
 
   create_table "teams", force: :cascade do |t|
     t.integer "organization_id", null: false
-    t.integer "primary_contact_id", null: false
+    t.integer "primary_contact_id"
     t.integer "sport_id", null: false
     t.integer "level_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -166,20 +166,15 @@ ActiveRecord::Schema.define(version: 2020_10_19_185623) do
   add_foreign_key "fee_rules", "game_types"
   add_foreign_key "fee_rules", "levels"
   add_foreign_key "fee_rules", "sports"
-  add_foreign_key "games", "away_teams"
   add_foreign_key "games", "game_types"
-  add_foreign_key "games", "home_teams"
   add_foreign_key "games", "levels"
   add_foreign_key "games", "sites"
   add_foreign_key "games", "sports"
   add_foreign_key "levels", "age_groups"
-  add_foreign_key "organizations", "primary_contacts"
-  add_foreign_key "sites", "primary_contacts"
   add_foreign_key "slots", "games"
   add_foreign_key "slots", "users"
   add_foreign_key "teams", "levels"
   add_foreign_key "teams", "organizations"
-  add_foreign_key "teams", "primary_contacts"
   add_foreign_key "teams", "sports"
   add_foreign_key "volunteer_slots", "games"
   add_foreign_key "volunteer_slots", "users"
