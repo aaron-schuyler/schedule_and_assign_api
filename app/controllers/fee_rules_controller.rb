@@ -1,2 +1,0 @@
-class FeeRulesController < ApplicationController
-end
