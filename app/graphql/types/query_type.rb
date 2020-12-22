@@ -7,13 +7,18 @@ module Types
 
     field :teams,
       [Types::TeamType],
-      null: false,
-      description: 'Returns a list of teams'
-
+      null: false do
+        argument :level_id, ID, required: false
+        argument :sport_id, ID, required: false
+      end
+    field :sports,
+      [Types::SportType],
+      null: false
     field :levels,
       [Types::LevelType],
-      null: false,
-      description: 'Returns a list of levels'
+      null: false do
+        argument :organization_id, ID, required: false
+      end
 
     field :organizations,
       [Types::OrganizationType],
@@ -31,14 +36,25 @@ module Types
     def games
       Game.all
     end
-    def teams
-      Team.all
+    def teams(args)
+      if args
+        Team.where(args)
+      else
+        Team.all
+      end
     end
     def team(args)
       Team.find_by(args)
     end
-    def levels
-      Level.all
+    def sports
+      Sport.all
+    end
+    def levels(organization_id: nil)
+      if organization_id
+        Organization.find(organization_id).levels
+      else
+        Level.all
+      end
     end
     def organizations
       Organization.all
