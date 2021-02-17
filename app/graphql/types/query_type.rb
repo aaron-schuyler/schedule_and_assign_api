@@ -2,8 +2,9 @@ module Types
   class QueryType < Types::BaseObject
     field :games,
       [Types::GameType],
-      null: false,
-      description: 'Returns a list of games'
+      null: false do
+        argument :team_id, ID, required: false
+      end
 
     field :teams,
       [Types::TeamType],
@@ -33,10 +34,14 @@ module Types
         argument :level_id, ID, required: false
       end
 
-    def games
-      Game.all
+    def games(**args)
+      if args[:team_id]
+        Game.where(home_team: args[:team_id]).or(Game.where(away_team: args[:team_id]))
+      else
+        Game.all
+      end
     end
-    def teams(args)
+    def teams(**args)
       if args
         Team.where(args)
       else
